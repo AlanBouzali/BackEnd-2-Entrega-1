@@ -11,7 +11,7 @@ export async function createHash(password) {
 export async function comparePassword(password, hashPassword) {
   const isPasswordCorrect = await bcrypt.compare(password, hashPassword);
 
-  console.log("comara", password, isPasswordCorrect);
+  console.log("compara", password, isPasswordCorrect);
   
 
   return isPasswordCorrect;

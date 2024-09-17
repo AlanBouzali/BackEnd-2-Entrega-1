@@ -38,7 +38,7 @@ app.use('/api/products',productRouter)
 app.use('/api/carts',cartRouter)
 app.use('/',viewsRouter) //Vista de Handlebars
 app.use('/api/auth', authRouter)
-app.use('api/users', userRouter)
+app.use('/api/users', userRouter)
 
 //Passport
 initializePassport()

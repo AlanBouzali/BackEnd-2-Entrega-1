@@ -24,10 +24,13 @@ export const initializePassport = ()=>{
                     return done(null, false, {message: "Usuario No Encontrado"})
                 }
 
-                const passwordIsCorrect = comparePassword(password, user.password)
+                const passwordIsCorrect = await comparePassword(password, user.password)
+                console.log("passs is correct", passwordIsCorrect);
                 if (!passwordIsCorrect) {
+                    console.log("estrategia pass is correct", passwordIsCorrect);
+                    
                     return done(null, false, {message: "Contraseña Incorrecta"})
-                }
+                } 
 
                 return done(null, user, {message: "Usuario Logueado"})
             } catch (error) {

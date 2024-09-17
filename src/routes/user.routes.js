@@ -4,7 +4,7 @@ import { userModel } from "../daos/mongodb/models/user.model.js";
 const router = Router();
 
 //Obtener TODOS los usuarios
-router.get('/', async (req, res) => {
+router.get('/', async (req, res) => {    
     try{
         const users = await userModel.find()
         res.status(200).json(users)

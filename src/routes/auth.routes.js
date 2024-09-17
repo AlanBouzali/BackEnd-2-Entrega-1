@@ -38,8 +38,6 @@ router.post("/register", async (req, res) => {
     }
 
     try {
-        console.log("Llega al try");
-        
         const newUser = {
             email,
             first_name,
@@ -59,7 +57,6 @@ router.post("/register", async (req, res) => {
 })
 
 router.get('/current', passport.authenticate("jwt",{session: false}), (req, res)=>{
-    console.log(req.user, "estoy en current");
     res.status(200).json({
         message:"Bienvenido",
         user: req.user

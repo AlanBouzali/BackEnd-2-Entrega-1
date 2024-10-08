@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import jwtStrategy from 'passport-jwt';
 import { userModel } from "../daos/mongodb/models/user.model.js";
 import { comparePassword } from "../utils/hash.js";
+import 'dotenv/config';
 
 const LocalStrategy = local.Strategy;
 const JWTStrategy = jwtStrategy.Strategy;
@@ -12,8 +13,7 @@ const ExtractJWT = jwtStrategy.ExtractJwt;
 export const initializePassport = ()=>{
     
     //Estrategia de Login
-    passport.use(
-        "login",
+    passport.use( "login",
         new LocalStrategy({usernameField:"email", passReqToCallback: true}, async (req, email, password, done) =>{
             try {
                 const user = await userModel.findOne({email})
@@ -43,7 +43,7 @@ export const initializePassport = ()=>{
     passport.use("jwt", new JWTStrategy(
         {
             jwtFromRequest: ExtractJWT.fromExtractors([cookieExtractor]),
-            secretOrKey: "s3cr3t"
+            secretOrKey: process.env.JWT_SECRET
         },
         async (payload, done) => {
             try {

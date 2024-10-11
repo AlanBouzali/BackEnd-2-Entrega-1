@@ -123,3 +123,16 @@ export const getUserByEmail = async(email)=>{
     }
 
 }
+
+export const addCartToUser = async(userId, cartId)=>{
+    try {
+        
+            const resp= await UserDaoMongoDB.addCartToUser(userId,cartId);
+            return resp
+        
+        
+    } catch (error) {
+        console.log(error);
+    }
+
+}
